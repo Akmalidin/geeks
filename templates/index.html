@@ -1,0 +1,264 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+<body data-spy="scroll" data-target="#navmenu" data-offset="70">
+
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="site-preloader-wrap">
+        <div class="spinner-wrap">
+            <div class="spinner"></div>
+        </div>
+    </div><!-- Preloader -->
+
+    <header id="header" class="header-section">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="navbar-brand"><img src="{{settings.logo.url}}" width='120px' height='40px' alt="Akmal"></a>
+                <div class="d-flex menu-wrap">
+                    <div id="navmenu" class="mainmenu">
+                        <ul class="nav">
+                            <li><a data-scroll class="nav-link active" href="#home">Главная <span class="sr-only">(current)</span></a></li>
+                            <li><a data-scroll class="nav-link" href="#about">Обо мне</a></li>
+                            <li><a data-scroll class="nav-link" href="#services">Услуги</a></li>
+                            <li><a data-scroll class="nav-link" href="#portfolio">Портфолио</a></li>
+                            <li><a data-scroll class="nav-link" href="#reviews">Отзывы</a></li>
+                            <li><a data-scroll class="nav-link" href="#contact">Контакт</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--.header-section -->
+
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row hero-wrap">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <h3 class="sub-heading wow fadeInUp" data-wow-delay="200ms">{{about.name}}...</h3>
+                        <h1 class="heading wow fadeInUp" data-wow-delay="300ms">{{about.title}}</h1>
+                        <p class="desc wow fadeInUp" data-wow-delay="400ms">{{about.desc}}.</p>
+                        <a href="#" class="default-btn wow fadeInUp" data-wow-delay="500ms">Скачать CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--.hero-section-->
+
+    <section id="about" class="about-section bd-bottom padding">
+        <div class="container">
+            <div class="row about-wrap d-flex align-items-center">
+                <div class="col-lg-5 sm-padding">
+                    <div class="about-bg wow fadeInLeft" data-wow-delay="100ms">
+                        <img src="{{about_me.image.url}}" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-7 sm-padding">
+                    <div class="about-content">
+                        <h2><span class="wow fadeInUp" data-wow-delay="100ms">{{about_me.title}}</span> <br><span class="wow fadeInUp" data-wow-delay="300ms">{{about_me.suptitle}}.</span></h2>
+                        <p class="wow fadeInUp" data-wow-delay="500ms">{{abput_me.desc}}.</p>
+                    </div>
+                    <ul class="skill-items wow fadeInUp" data-wow-delay="700ms">
+                        {% for about_me_skills in about_me_skills %}
+                        <li class="skill-item">
+                            <h5>{{about_me_skills.title}}</h5>
+                            <div class="progress">
+                                <div class="progress-bar wow slideInLeft" data-wow-delay="0ms" data-wow-duration="2000ms" role="progressbar" style="width: {{about_me_skills.number}}%;">
+                                    <span>{{about_me_skills.number}}%</span>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="cv-btn">
+                        <a href="#" class="default-btn wow fadeInUp" data-wow-delay="900ms">ПОЛУЧИТЕ БЕСПЛАТНОЕ ПРЕДЛОЖЕНИЕ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.about-section-->
+
+    <section id="services" class="service-section bg-grey bd-bottom padding">
+        <div class="container">
+            <div class="section-heading text-center mb-40">
+                <h2 class="wow fadeInUp">Потрясающие услуги</h2>
+            </div>
+            <!--/.section-heading-->
+            <div class="service-wrap row">
+                {% for services in services %}
+                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="100ms">
+                    <div class="service-item text-center">
+                        <i class="icon-tools"></i>
+                        <h3><span>{{services.title}}</span></h3>
+                        <p>{{services.suptitle}}.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--/.service-section-->
+
+    <section class="counter-section padding overlay">
+        <div class="container">
+            <div class="counter-wrap row">
+                {% for happy in happy %}
+                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="300ms">
+                    <div class="counter-item text-center">
+                        <i class="icon-trophy"></i>
+                        <h3 class="counter">{{happy.number}}</h3>
+                        <h4>{{happy.title}}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--/.counter-section-->
+
+    <section id="portfolio" class="work-section bd-bottom padding">
+        <div class="container">
+            <div class="section-heading text-center mb-40">
+                <h2 class="wow fadeInUp" data-wow-delay="100ms">Work Portfolios</h2>
+            </div>
+            <!--/.section-heading-->
+            <div class="work-items-wrap">
+                <div class="work-titles"></div>
+                <ul class="work-filter mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <li class="active" data-filter="*">Все</li>
+                    <li data-filter=".branding">Брендинг</li>
+                    <li data-filter=".design">Дизайн</li>
+                    <li data-filter=".wordpress">WordPress</li>
+                    <li data-filter=".marketing">Маркетинг</li>
+                </ul><!-- /.Work filter -->
+                <div class="row work-items wow fadeInUp" data-wow-delay="500ms">
+                    {% for portfolio in portfolio %}
+                    <div class="col-md-4 col-sm-6 xs-padding single-item {{portfolio.category}} wordpress">
+                        <a href="{{portfolio.image.url}}" class="work-box img-popup" data-title="{{portfolio.title}}" data-category="{{portfolio.category}}">
+                            <div class="work-thumb">
+                                <img src="{{portfolio.image.url}}" alt="work">
+                            </div>
+                        </a>
+                    </div><!-- /work-1 -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.work-section-->
+
+    <section id="reviews" class="testimonial-section bg-grey bd-bottom padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-none d-lg-block d-md-block">
+                    <div class="clients-thumb">
+                        <div class="ct-thumb thumb-1"></div>
+                        <div class="ct-thumb thumb-2"></div>
+                        <div class="ct-thumb thumb-3"></div>
+                        <div class="ct-thumb thumb-4"></div>
+                        <div class="ct-thumb thumb-5"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="section-heading">
+                        <h2 class="wow fadeInUp" data-wow-delay="100ms">Отзывы клиентов</h2>
+                    </div>
+                    <!--/.section-heading-->
+                    <div id="testimonial-carousel" class="testimonial-carousel owl-carousel wow fadeInUp" data-wow-delay="300ms">
+                        {% for reviews in reviews %}
+                        <div class="testi-item">
+                            <p>{{reviews.review}}</p>
+                            <div class="testi-thumb">
+                                <img src="{{reviews.image.url}}" alt="img">
+                                <h3>{{reviews.name}} <span>{{reviews.work}}</span></h3>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--.testimonial-section-->
+
+    <section id="contact" class="contact-section padding">
+        <div class="container">
+            <div class="contact-wrapper d-flex align-items-center row">
+                <div class="col-lg-5 col-md-6 sm-padding">
+                    <div class="contact-info">
+                        <div class="section-heading mb-20">
+                            <h2 class="wow fadeInUp" data-wow-delay="100ms">связаться</h2>
+                        </div>
+                        <!--/.section-heading-->
+                        <p class="wow fadeInUp" data-wow-delay="300ms">lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 sm-padding">
+                    <div class="contact-form">
+                        <form method="POST" class="form-horizontal">
+                            {% csrf_token %}
+                            <div class="form-group colum-row row wow fadeInUp" data-wow-delay="500ms">
+                                <div class="col-sm-6">
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group row wow fadeInUp" data-wow-delay="700ms">
+                                <div class="col-md-12">
+                                    <textarea id="message" name="message" cols="30" rows="5" class="form-control message" placeholder="Message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row wow fadeInUp" data-wow-delay="900ms">
+                                <div class="col-md-12">
+                                    <button id="submit" class="default-btn" type="submit">Отправить</button>
+                                </div>
+                            </div>
+                            <div id="form-messages" class="alert" role="alert"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.contact-section-->
+
+    <section class="widget-section padding">
+        <div class="container">
+            <div class="widget-content text-center">
+                <h2 class="wow fadeInUp" data-wow-delay="100ms">Давай приступим к работе <span>!</span></h2>
+                <a class="mb-15 wow fadeInUp" data-wow-delay="200ms" href="#">{{settings.email}}</a>
+                <a href="tel:{{settings.phone}}" class=" wow fadeInUp" data-wow-delay="300ms">+{{settings.phone}}</a>
+            </div>
+        </div>
+    </section>
+    <!--/.widget-section-->
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-wrap row">
+                <div class="col-md-6">
+                    <ul class="footer-social">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Behance</a></li>
+                        <li><a href="#">Dribbble</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright">
+                        <p>&copy; <span id="year"></span> Xavia Powerd By Akmal Madakimov</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- /.footer-section -->
+
+    <a data-scroll href="#header" id="scroll-to-top"><i class="ti-angle-up"></i></a>
+{% endblock %}
